@@ -40,6 +40,7 @@ async def create_exchange(name_exchange: str, type_exchange: ExchangeType) -> Ro
 
 @rabbit_router.after_startup
 async def setup_queues_exchanges(app: FastAPI):
+    print("After STARTUP")
     my_exchange = await create_exchange(
         name_exchange="my_exchange",
         type_exchange=ExchangeType.FANOUT
